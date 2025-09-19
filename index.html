@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Earth</title>
 
-    <!-- daisyUI  -->
+    <!-- daisyUI + tailwind  -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+    <!-- fonts  -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <!-- CSS  -->
-     <script rel="stylesheet" href="./styles.css"></script>
+     <link rel="stylesheet" href="./styles.css">
 </head>
-<body class="max-w-[1920px] mx-auto">
+<body class="max-w-[1920px] mx-auto bg-[#F0FDF4]">
     <nav class="w-100% h-[91px]">
         <div class="navbar bg-base-100 shadow-sm bg-[#15803D] px-[135px]">
   <div class="navbar-start">
@@ -26,10 +31,6 @@
         <li><a>Item 1</a></li>
         <li>
           <a>Parent</a>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
         </li>
         <li><a>Item 3</a></li>
       </ul>
@@ -50,15 +51,29 @@
   </div>
 </div>
     </nav>
-    <section class="flex justify-center items-center w-100% h-auto bg-[#CFF0DC] mt-[-26px] px-[0px]">
+    <section class="flex justify-between items-center w-100% h-auto bg-[#CFF0DC] mt-[-26px]">
         <img src="/assets/hero-leaf1.png" alt="" class="">
-        <div class="justify-center items-center">
+        <div class="justify-center items-center text-center">
             <h1 class="text-[48px] font-bold">Plant a Tree, Grow a Future</h1>
-            <p>Join our mission to plant 1 million trees and make the Earth greener for future
+            <p class="text-[16px] text-[#1F2937] opacity-70 mb-[24px]">Join our mission to plant 1 million trees and make the Earth greener for future<br>
             generations.</p>
             <a class="btn rounded-[999px] text-[#15803D] bg-[#FACC15]">Get Involved</a>
         </div>
-        <img src="/assets/hero-leaf2.png" alt="">
+        <img src="/assets/hero-leaf2.png" alt="" class="">
     </section>
+    <section>
+      <h1 class="text-center text-[32px] font-bold text-[#1F2937] mb-[40px]">Choose Your Trees</h1>
+      <div>
+        <div class="w-[250px] h-auto">
+          <h2 class="text-[#000000] font-bold text-[20px]">Categories</h2>
+          <div id="cate-container"></div>
+        </div>
+        <div></div>
+        <div></div>
+    </div>
+    </section>
+
+    <!-- JS file  -->
+     <script src="/main.js"></script>
 </body>
 </html>
