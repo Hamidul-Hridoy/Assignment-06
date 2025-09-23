@@ -78,6 +78,9 @@
         <div class="w-[1090px] max-h-[880px]  grid grid-cols-3  gap-[30px] overflow-y-auto" id="all-container"></div>
         <div class="w-[250px] max-h-[880px] overflow-y-auto border bg-white">
           <h3 class="text-[20px] font-bold text-black mx-[16px] mt-[16px]">Your Cart</h3>
+          <div id="cart" class="w-100%">
+            
+          </div>
         </div>
     </div>
     </section>
@@ -96,9 +99,9 @@
     <section class="w-100% h-[436px] mt-[100px] bg-[#CFF0DC]">
       <h3 class="text-[32px] text-[#1F2937] font-bold text-center pt-[100px]">Our Impact</h3>
       <div class="flex gap-[50px] mx-[135px] mt-[40px]">
-        <div class="w-[517px] h-[156px] bg-white text-center py-[40px]"><h2 class="text-[20px] text-green-700 font-bold">500K+</h2><p class="mt-[12px] text-[16px] text-[#1F2937] opacity-80">Trees Planted</p></div>
-        <div class="w-[517px] h-[156px] bg-white text-center py-[40px]"><h2 class="text-[20px] text-green-700 font-bold">120+</h2><p class="mt-[12px] text-[16px] text-[#1F2937] opacity-80">Communities Involved</p></div>
-        <div class="w-[517px] h-[156px] bg-white text-center py-[40px]"><h2 class="text-[20px] text-green-700 font-bold">30+</h2><p class="mt-[12px] text-[16px] text-[#1F2937] opacity-80">Countries Reached</p></div>
+        <div class="w-[517px] h-[156px] bg-white text-center py-[40px] transition transformation hover:bg-green-200 hover:scale-110 rounded-[12px] shadow-lg"><h2 class="text-[20px] text-green-700 font-bold">500K+</h2><p class="mt-[12px] text-[16px] text-[#1F2937] opacity-80">Trees Planted</p></div>
+        <div class="w-[517px] h-[156px] bg-white text-center py-[40px] transition transformation hover:bg-green-200 hover:scale-110 rounded-[12px] shadow-lg"><h2 class="text-[20px] text-green-700 font-bold">120+</h2><p class="mt-[12px] text-[16px] text-[#1F2937] opacity-80">Communities Involved</p></div>
+        <div class="w-[517px] h-[156px] bg-white text-center py-[40px] transition transformation hover:bg-green-200 hover:scale-110 rounded-[12px] shadow-lg"><h2 class="text-[20px] text-green-700 font-bold">30+</h2><p class="mt-[12px] text-[16px] text-[#1F2937] opacity-80">Countries Reached</p></div>
     </div>
     </section>
     <section class="w-100% h-[591px] bg-[#166534]">
@@ -106,7 +109,13 @@
       <div class="max-w-[650px] mx-auto bg-[#15803D] mt-[40px] flex flex-col justify-center items-center py-[40px] text-[16px]">
         <input type="text" placeholder="Your Name" class="input input-sm w-[570px] h-[48px] placeholder-[#818891] placeholder-opacity-50" />
         <input type="text" placeholder="Your Email Adress" class="input input-sm w-[570px] h-[48px] mt-[12px] placeholder-[#818891] placeholder-opacity-50" />
-        <input type="text" placeholder="Number of Trees" class="input input-sm w-[570px] h-[48px] mt-[12px] placeholder-black font-semibold" />
+        <input type="text" class="input w-[570px] h-[48px] mt-[12px] placeholder-black font-semibold text-[13px]" placeholder="Number of Trees" list="browsers" />
+          <datalist id="browsers">
+            <option value="1 Tree-$5"></option>
+            <option value="2 Trees-$10"></option>
+            <option value="5 Trees-$25 "></option>
+            <option value="10 Trees-$50"></option>
+          </datalist>
         <button class="btn rounded-[999px] text-[#15803D] bg-[#FACC15] mt-[20px] w-[570px] h-[43px]">Donate Now</button>
       </div>
     </section>
