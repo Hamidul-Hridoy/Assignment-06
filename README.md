@@ -46,8 +46,8 @@ https://openapi.programming-hero.com/api/category/1
 https://openapi.programming-hero.com/api/plant/${id}
 ```
 
-```bash
-https://openapi.programming-hero.com/api/plant/1
+```bashhttps://openapi.programming-hero.com/api/plant/1
+
 ```
 ---
 

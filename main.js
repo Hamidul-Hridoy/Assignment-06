@@ -42,22 +42,8 @@ const displayAll = (trees) => {
         <div class="w-[343.33px] h-auto bg-white p-[16px] rounded-[8px]">
             <img src="${tree.image}" class="w-[311.33px] h-[186.8px] rounded-[8px] object-cover">
 
-            <a  href="#my_modal_8" class="btn text-[14px] text-[#18181B] font-bold mt-[12px] border-none bg-white">${tree.name}</a>
-
-
-            <div class="modal" role="dialog" id="my_modal_8">
-                <div class="modal-box gap-2">
-                    <h3 class="text-2xl font-bold">${tree.name}</h3>
-                    <img src="${tree.image}" class="w-[511.33px] h-[300.8px] rounded-[8px] object-cover">
-                    <h2 class="text-xl font-semibold">Category:<span class="text-[16px] font-medium opacity-70"> ${tree.category}</span></h2>
-                    <h2 class="text-xl font-semibold">Price:<span class="text-[16px] font-medium opacity-70"> ${tree.price}</span></h2>
-                    <h2 class="text-xl font-semibold">Description:<span class="text-[16px] font-medium opacity-70"> ${tree.description}</span></h2>
-                    <p class="py-4">This modal works with anchor links</p>
-                <div class="modal-action">
-                <a href="#" class="btn">Close</a>
-                </div>
-            </div>
-        </div>
+            <button onclick="details(${tree.id})"  class="btn text-[14px] text-[#18181B] font-bold mt-[12px] border-none bg-white">${tree.name}</button>
+            
 
             <p class="text-[12px] text-[#71717A] opacity-80 mt-[8px]">${tree.description}</p>
             <div class="flex justify-between mt-[8px]">
@@ -84,15 +70,40 @@ btn.addEventListener("click", () => {
 });
     
 
-console.log(btn.innerText);
 }
 loadAll();
+
+
+const details =(id)=>{
+    fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+    .then((res) => res.json())
+    .then((mod) => modals(mod.plants));
+};
+
+const modals = (detail) =>{
+    console.log(detail);
+    const modalbox = document.getElementById("details-container");
+    modalbox.innerHTML=`
+     <h3 class="text-2xl font-bold">${detail.name}</h3>
+                    <img src="${detail.image}" class="w-[511.33px] h-[300.8px] rounded-[8px] object-cover">
+                    <h2 class="text-xl font-semibold">Category:<span class="text-[16px] font-medium opacity-70"> ${detail.category}</span></h2>
+                    <h2 class="text-xl font-semibold">Price:<span class="text-[16px] font-medium opacity-70"> ${detail.price}</span></h2>
+                    <h2 class="text-xl font-semibold">Description:<span class="text-[16px] font-medium opacity-70"> ${detail.description}</span></h2>
+                    <p class="py-4">This modal works with anchor links</p>
+
+    `;  
+    document.getElementById("my_modal_1").showModal();
+}
+details();
+
 
 const types = (id) => {
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res)=>res.json())
     .then((type)=>ty_plants(type.plants));
 };
+
+
 
 const ty_plants = (elements) =>{
     const typebox = document.getElementById("all-container");
@@ -104,22 +115,8 @@ const ty_plants = (elements) =>{
         <div class="w-[343.33px] h-auto bg-white p-[16px] rounded-[8px]">
             <img src="${element.image}" class="w-[311.33px] h-[186.8px] rounded-[8px] object-cover">
 
-            <a  href="#my_modal_8" class="btn text-[14px] text-[#18181B] font-bold mt-[12px] border-none bg-white">${element.name}</a>
+            <a class="btn text-[14px] text-[#18181B] font-bold mt-[12px] border-none bg-white">${element.name}</a>
 
-
-            <div class="modal" role="dialog" id="my_modal_8">
-                <div class="modal-box gap-2">
-                    <h3 class="text-2xl font-bold">${element.name}</h3>
-                    <img src="${element.image}" class="w-[511.33px] h-[300.8px] rounded-[8px] object-cover">
-                    <h2 class="text-xl font-semibold">Category:<span class="text-[16px] font-medium opacity-70"> ${element.category}</span></h2>
-                    <h2 class="text-xl font-semibold">Price:<span class="text-[16px] font-medium opacity-70"> ${element.price}</span></h2>
-                    <h2 class="text-xl font-semibold">Description:<span class="text-[16px] font-medium opacity-70"> ${element.description}</span></h2>
-                    <p class="py-4">This modal works with anchor links</p>
-                <div class="modal-action">
-                <a href="#" class="btn">Close</a>
-                </div>
-            </div>
-        </div>
 
             <p class="text-[12px] text-[#71717A] opacity-80 mt-[8px]">${element.description}</p>
             <div class="flex justify-between mt-[8px]">
@@ -133,4 +130,4 @@ const ty_plants = (elements) =>{
         typebox.append(div3);
     };
 };
-loadtypes();
+
