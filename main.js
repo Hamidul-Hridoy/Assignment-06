@@ -42,32 +42,20 @@ const displayAll = (trees) => {
         <div class="w-[343.33px] h-auto bg-white p-[16px] rounded-[8px]">
             <img src="${tree.image}" class="w-[311.33px] h-[186.8px] rounded-[8px] object-cover">
 
-            <button onclick="details(${tree.id})"  class="btn text-[14px] text-[#18181B] font-bold mt-[12px] border-none bg-white">${tree.name}</button>
+            <button onclick="details(${tree.id})"  class="btn text-[14px] text-[#18181B] font-bold mt-[12px] border-none bg-white name">${tree.name}</button>
             
 
             <p class="text-[12px] text-[#71717A] opacity-80 mt-[8px]">${tree.description}</p>
             <div class="flex justify-between mt-[8px]">
                 <button class="w-auto px-[12px] h-[28px] rounded-[400px] bg-[#DCFCE7] text-[#15803D] text-[14px] font-semibold geist">${tree.category}</button>
-                <h2 class="text-[14px] font-bold text-[#1F2937]"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}</h2>
+                <h2 class="text-[14px] font-bold text-[#1F2937] price"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}</h2>
             </div>
-            <button id="cartBtn" class="w-[311.33px] h-[43px] text-center focus:h-[35px] pl-[10px] bg-[#15803D] font-semibold text-white text-[16px] rounded-[999px] px-[20px] mt-[12px]">Add to Cart</button>
+            <button onclick="addCart(this)" id="cartBtn" class="w-[311.33px] h-[43px] text-center focus:h-[35px] pl-[10px] bg-[#15803D] font-semibold text-white text-[16px] rounded-[999px] px-[20px] mt-[12px]">Add to Cart</button>
 
         </div>
         `
         allContainer.append(div2);
     }
-
-
-    
-        const btn=document.getElementById("cartBtn");
-const list=document.getElementById("cart");
-list.innerHTML="";
-
-btn.addEventListener("click", () => {
-    list.innerHTML += ` 
-        <div class="w-[200px] h-auto pl=[50px]">
-            <h1>hello</h1></div>`;
-});
     
 
 }
@@ -96,6 +84,44 @@ const modals = (detail) =>{
 }
 details();
 
+const details1 =(id)=>{
+    fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+    .then((res) => res.json())
+    .then((mod) => modals1(mod.plants));
+};
+
+const modals1 = (detail1) =>{
+    console.log(detail1);
+    const modalbox1 = document.getElementById("details-container");
+    modalbox1.innerHTML=`
+     <h3 class="text-2xl font-bold">${detail1.name}</h3>
+                    <img src="${detail1.image}" class="w-[511.33px] h-[300.8px] rounded-[8px] object-cover">
+                    <h2 class="text-xl font-semibold">Category:<span class="text-[16px] font-medium opacity-70"> ${detail1.category}</span></h2>
+                    <h2 class="text-xl font-semibold">Price:<span class="text-[16px] font-medium opacity-70"> ${detail1.price}</span></h2>
+                    <h2 class="text-xl font-semibold">Description:<span class="text-[16px] font-medium opacity-70"> ${detail1.description}</span></h2>
+                    <p class="py-4">This modal works with anchor links</p>
+
+    `;  
+    document.getElementById("my_modal_1").showModal();
+}
+details1();
+
+const cart =[];
+const total = 0;
+
+const addCart = (butt) =>{
+    const parent =butt.parentNode;
+    const name = parent.querySelector(".name").innerText;
+    const price = Number(parent.children[3].querySelector(".price").innerText);
+    console.log("add to cart clicked",name,price);
+    const selected ={
+        treeName: name,
+        treePrice: price, 
+    };
+    cart.push(selected);
+};
+console.log(cart);
+
 
 const types = (id) => {
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
@@ -106,6 +132,10 @@ const types = (id) => {
 
 
 const ty_plants = (elements) =>{
+
+    document.getElementById("all-container").classList.add("hidden");
+    document.getElementById("loading").classList.remove("hidden");
+
     const typebox = document.getElementById("all-container");
     typebox.innerHTML = "";
 
@@ -115,7 +145,7 @@ const ty_plants = (elements) =>{
         <div class="w-[343.33px] h-auto bg-white p-[16px] rounded-[8px]">
             <img src="${element.image}" class="w-[311.33px] h-[186.8px] rounded-[8px] object-cover">
 
-            <a class="btn text-[14px] text-[#18181B] font-bold mt-[12px] border-none bg-white">${element.name}</a>
+            <a onclick="details1(${element.id})" class="btn text-[14px] text-[#18181B] font-bold mt-[12px] border-none bg-white">${element.name}</a>
 
 
             <p class="text-[12px] text-[#71717A] opacity-80 mt-[8px]">${element.description}</p>
@@ -129,5 +159,7 @@ const ty_plants = (elements) =>{
         `
         typebox.append(div3);
     };
+    document.getElementById("all-container").classList.remove("hidden");
+    document.getElementById("loading").classList.add("hidden");
 };
 

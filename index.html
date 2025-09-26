@@ -75,11 +75,21 @@
           <h2 class="text-[#000000] font-bold text-[20px]">Categories</h2>
           <div id="cate-container"></div>
         </div>
+
+        <div class="min-h-screen flex flex-col justify-start items-center hidden w-[1090px]" id="loading"><span class="loading loading-dots loading-md"></span></div>
+
         <div class="w-[1090px] max-h-[880px]  grid grid-cols-3  gap-[30px] overflow-y-auto" id="all-container"></div>
-        <div class="w-[250px] max-h-[880px] overflow-y-auto border bg-white">
+        <div class="w-[250px] max-h-[880px] overflow-y-auto border bg-white rounded-[16px]">
           <h3 class="text-[20px] font-bold text-black mx-[16px] mt-[16px]">Your Cart</h3>
           <div id="cart" class="w-100%">
-            
+            <div class="max-w-[220px] h-auto mx-auto my-[10px] bg-[#f0f8f2] rounded-[8px] space-y-[10px] py-[10px]">
+              <h2>Mango Tree</h2>
+              <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>500 <i class="fa-solid fa-xmark"></i> 1</p>
+            </div>
+            <div class="max-w-[220px] h-auto mx-auto border-t flex justify-between">
+              <h2>Total:</h2>
+              <h2><i class="fa-solid fa-bangladeshi-taka-sign"></i>1000</h2>
+            </div>
           </div>
         </div>
     </div>
