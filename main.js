@@ -106,8 +106,8 @@ const modals1 = (detail1) =>{
 }
 details1();
 
-const cart =[];
-const total = 0;
+let cart =[];
+let total = 0;
 
 const addCart = (butt) =>{
     const parent =butt.parentNode;
@@ -119,8 +119,48 @@ const addCart = (butt) =>{
         treePrice: price, 
     };
     cart.push(selected);
+    displayCart(cart);
+
+    total = total + price ;
+    displayTotal(total);
 };
-console.log(cart);
+
+const displayTotal =(val)=>{
+    document.getElementById("total-cart").innerHTML= val;
+}
+
+const displayCart = (cart) =>{
+    const cartBox = document.getElementById("cart");
+    cartBox.innerHTML ="";
+
+    for(let item of cart){
+        const newItem  = document.createElement("div");
+        newItem.innerHTML = `
+        <div class="max-w-[220px] h-auto mx-auto  bg-[#f0f8f2] rounded-[8px] space-y-[10px] py-[10px] shadow-lg flex justify-between items-center">
+            <div>
+              <h2 class="tree-name">${item.treeName}</h2>
+              <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span class="cost">${item.treePrice}</span> <i class="fa-solid fa-xmark"></i> 1</p>
+            </div>
+             <div><button onclick="removeCart(this)"><i class="fa-solid fa-xmark"></i></button></div> 
+            </div>
+        `;
+        cartBox.append(newItem);
+    };
+};
+
+const removeCart = (btn) =>{
+    const items = btn.parentNode.parentNode;
+    const item = items.children[0].children[0];
+    const title = item.innerText;
+    const price = Number(items.children[0].children[1].querySelector(".cost").innerText);
+    console.log(price);
+
+    cart = cart.filter((item) => item.treeName != title);
+    displayCart(cart);
+    total = total - price;
+    displayTotal(total);
+};
+
 
 
 const types = (id) => {
@@ -145,15 +185,15 @@ const ty_plants = (elements) =>{
         <div class="w-[343.33px] h-auto bg-white p-[16px] rounded-[8px]">
             <img src="${element.image}" class="w-[311.33px] h-[186.8px] rounded-[8px] object-cover">
 
-            <a onclick="details1(${element.id})" class="btn text-[14px] text-[#18181B] font-bold mt-[12px] border-none bg-white">${element.name}</a>
+            <a onclick="details1(${element.id})" class="btn text-[14px] text-[#18181B] font-bold mt-[12px] border-none bg-white name">${element.name}</a>
 
 
             <p class="text-[12px] text-[#71717A] opacity-80 mt-[8px]">${element.description}</p>
             <div class="flex justify-between mt-[8px]">
                 <button class="w-auto px-[12px] h-[28px] rounded-[400px] bg-[#DCFCE7] text-[#15803D] text-[14px] font-semibold geist">${element.category}</button>
-                <h2 class="text-[14px] font-bold text-[#1F2937]"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${element.price}</h2>
+                <h2 class="text-[14px] font-bold text-[#1F2937] price"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${element.price}</h2>
             </div>
-            <button id="cartBtn" class="w-[311.33px] h-[43px] text-center focus:h-[35px] pl-[10px] bg-[#15803D] font-semibold text-white text-[16px] rounded-[999px] px-[20px] mt-[12px]">Add to Cart</button>
+            <button onclick="addCart(this)" id="cartBtn" class="w-[311.33px] h-[43px] text-center focus:h-[35px] pl-[10px] bg-[#15803D] font-semibold text-white text-[16px] rounded-[999px] px-[20px] mt-[12px]">Add to Cart</button>
 
         </div>
         `

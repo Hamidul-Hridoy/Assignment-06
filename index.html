@@ -30,17 +30,8 @@
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
       </div>
-      <ul
-        tabindex="0"
-        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-        </li>
-        <li><a>Item 3</a></li>
-      </ul>
+      
     </div>
     <a class="pl-[50px] text-xl text-white font-bold">Green Earth</a>
   </div> 
@@ -81,14 +72,12 @@
         <div class="w-[1090px] max-h-[880px]  grid grid-cols-3  gap-[30px] overflow-y-auto" id="all-container"></div>
         <div class="w-[250px] max-h-[880px] overflow-y-auto border bg-white rounded-[16px]">
           <h3 class="text-[20px] font-bold text-black mx-[16px] mt-[16px]">Your Cart</h3>
-          <div id="cart" class="w-100%">
-            <div class="max-w-[220px] h-auto mx-auto my-[10px] bg-[#f0f8f2] rounded-[8px] space-y-[10px] py-[10px]">
-              <h2>Mango Tree</h2>
-              <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>500 <i class="fa-solid fa-xmark"></i> 1</p>
+          <div  class="w-100% space-y-[10px]">
+            <div id="cart" class="max-w-[220px] h-auto mx-auto my-[10px] bg-[#f0f8f2] rounded-[8px] space-y-[10px] py-[10px]">
             </div>
-            <div class="max-w-[220px] h-auto mx-auto border-t flex justify-between">
+            <div class="max-w-[220px] h-auto mx-auto border-t-3 border-gray-400 flex justify-between">
               <h2>Total:</h2>
-              <h2><i class="fa-solid fa-bangladeshi-taka-sign"></i>1000</h2>
+              <h2><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="total-cart">0</span></h2>
             </div>
           </div>
         </div>
